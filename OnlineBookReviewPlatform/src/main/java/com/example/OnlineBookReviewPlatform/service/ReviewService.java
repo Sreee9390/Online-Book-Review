@@ -20,13 +20,13 @@ public class ReviewService {
     public List<Review> getReviewsByBookId(UUID bookId) {
         return reviewRepo.findByBookId(bookId);
     }
-    public Review addReview(UUID bookId, User user, Review review) {
-        Book book = bookRepo.findById(bookId).orElseThrow();
-        review.setBook(book);
-        review.setUser(user);
-        review.setCreatedAt(LocalDateTime.now());
-        return reviewRepo.save(review);
-    }
+    // public Review addReview(UUID bookId, User user, Review review) {
+    //     Book book = bookRepo.findById(bookId).orElseThrow();
+    //     review.setBook(book);
+    //     review.setUser(user);
+    //     review.setCreatedAt(LocalDateTime.now());
+    //     return reviewRepo.save(review);
+    // }
     public Review updateReview(UUID id, Review updated) {
         Review review = reviewRepo.findById(id).orElseThrow();
         review.setReviewText(updated.getReviewText());
