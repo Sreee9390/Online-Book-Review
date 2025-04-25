@@ -44,24 +44,9 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
-                
-                // Book endpoints
-                // .requestMatchers(HttpMethod.GET, "/api/books").permitAll()
-                // .requestMatchers(HttpMethod.GET, "/api/books/*").permitAll()  // Single path variable
-                // .requestMatchers(HttpMethod.GET, "/api/books/search").permitAll()
-                
-                // Review endpoints
-                // .requestMatchers(HttpMethod.GET, "/api/books/*/reviews").permitAll()  // GET reviews for a book
-                // .requestMatchers(HttpMethod.POST, "/api/books/*/reviews").hasRole("USER")
-                // .requestMatchers(HttpMethod.PUT, "/api/books/*/reviews/*").hasRole("USER")
-                // .requestMatchers(HttpMethod.DELETE, "/api/books/*/reviews/*").hasRole("USER")
-                
                 .requestMatchers("/api/user/**").hasRole("USER")
-                
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                
                 .requestMatchers("/api/auth/me").authenticated()
-                
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

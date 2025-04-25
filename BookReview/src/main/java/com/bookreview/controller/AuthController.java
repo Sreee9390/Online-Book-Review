@@ -52,7 +52,6 @@ public ResponseEntity<?> register(@RequestBody RegisterDto registerDto) {
         return ResponseEntity.badRequest().body("Email is already taken!");
     }
 
-    // Validate role
     String role = registerDto.getRole();
     if (role == null || (!role.equals("USER") && !role.equals("ADMIN"))) {
         return ResponseEntity.badRequest().body("Role must be either USER or ADMIN");
@@ -62,15 +61,13 @@ public ResponseEntity<?> register(@RequestBody RegisterDto registerDto) {
     user.setName(registerDto.getName());
     user.setEmail(registerDto.getEmail());
     user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-    user.setRole(role); // Set the validated role
+    user.setRole(role); 
     
     userRepository.save(user);
     
     return ResponseEntity.ok("User registered successfully");
 }
 
-    // @Autowired
-    // private UserRepository userRepository;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.bookreview.entity.Book;
 import com.bookreview.repository.BookRepository;
 
@@ -31,13 +30,11 @@ public class AdminController {
     }
 
 
-    // GET ALL BOOKS (Admin-only)
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(bookRepository.findAll());
     }
 
-    // GET BOOK BY ID (Admin-only)
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable UUID id) {
         return bookRepository.findById(id)
@@ -45,7 +42,6 @@ public class AdminController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    
 
     @PostMapping
     public ResponseEntity<Book> addBook(@RequestBody Book book) {

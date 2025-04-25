@@ -20,7 +20,6 @@ public class Book {
     private String description;
     private String coverImageUrl;
     
-    // Constructors, getters, and setters
     public Book() {}
     
     public Book(String title, String author, String genre, String description, String coverImageUrl) {
@@ -31,7 +30,6 @@ public class Book {
         this.coverImageUrl = coverImageUrl;
     }
     
-    // Getters and setters for all fields
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
     public String getTitle() { return title; }

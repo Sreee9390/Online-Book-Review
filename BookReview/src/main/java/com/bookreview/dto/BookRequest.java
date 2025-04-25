@@ -7,7 +7,6 @@ public class BookRequest {
     private String description;
     private String coverImageUrl;
     
-    // Getters and setters
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     public String getAuthor() { return author; }
